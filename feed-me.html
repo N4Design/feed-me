@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Feed Me - Medium Feed for your website</title>
+        <meta name="description" content="Add a Medium feed to you website">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/feed-me.css" />
+        <script src="js/feed-me.js"></script>
+        <script>
+            var feedMeSettings = {
+                feedURL: 'https://medium.com/feed/the-hut34-project/',
+                linkOutText: 'Read more',
+                openNewTab: true,
+                linkToMediumProfileText: 'Hut34 on Medium',
+                postsCount: 6,
+                maxWords: 30,
+                showAuthor: true,
+                showDate: true,
+                maxImageHeight: 450,
+                numColumns: 3,
+                element: 'feed-me-embed'
+            };
+        </script>
+    </head>
+    <body>
+        <div id="feed-me-embed"></div>
+    </body>
+</html>
