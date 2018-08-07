@@ -13,20 +13,6 @@ function abbrev(str, type, limit, separator, truncator) {
     }
 }
 
-var feedMeSettings = {
-    feedURL: 'https://medium.com/feed/the-hut34-project/',
-    linkOutText: 'Read more',
-    openNewTab: true,
-    linkToMediumProfileText: 'Hut34 on Medium',
-    postsCount: 6,
-    maxWords: 30,
-    showAuthor: true,
-    showDate: true,
-    maxImageHeight: 450,
-    numColumns: 3,
-    element: 'feed-embed'
-};
-
 var feedMe = {
     initialize: function(feedMeSettings) {
         var data = {
