@@ -24,6 +24,7 @@ var feedMe = {
 
                 var mediumURL = 'https://medium.com/';
                 var mediumProfileURL = response.feed.url;
+				var feedMeShowImage = true;
                 var feedMePostsCount = 4;
                 var feedMeLinkToMediumProfileText = 'Go to Feed';
                 var feedMeLinkOutText = 'Read all articles';
@@ -33,37 +34,23 @@ var feedMe = {
                 var feedMeDate ='';
                 var feedMeColumns = 0;
                 var feedMeMaxImageHeight = 0;
-                if(feedMeSettings.openNewTab === true) {
-                    feedMeTarget = '_blank';
-                }
+				
+                if(feedMeSettings.openNewTab === true) feedMeTarget = '_blank';
 
-                if(feedMeSettings.linkOutText !== undefined) {
-                    feedMeLinkOutText = feedMeSettings.linkOutText;
-                }
+                if(feedMeSettings.linkOutText !== undefined) feedMeLinkOutText = feedMeSettings.linkOutText;
 
-                if (feedMeSettings.linkToMediumProfileText !== undefined) {
-                    feedMeLinkToMediumProfileText = feedMeSettings.linkToMediumProfileText;
-                }
+                if (feedMeSettings.linkToMediumProfileText !== undefined) feedMeLinkToMediumProfileText = feedMeSettings.linkToMediumProfileText;
+		    
+				if (feedMeSettings.showImage !== undefined) feedMeShowImage = feedMeSettings.showImage;
 
-                if (feedMeSettings.postsCount - 1 > 4) {
-                    feedMePostsCount = feedMeSettings.postsCount - 1;
-                }
+                if (feedMeSettings.postsCount - 1 > 4) feedMePostsCount = feedMeSettings.postsCount - 1;
+                if (feedMePostsCount > response.items.length) feedMePostsCount = response.items.length;
 
-                if (! isNaN(feedMeSettings.maxImageHeight)) {
-                    feedMeMaxImageHeight = feedMeSettings.maxImageHeight
-                }
+                if (! isNaN(feedMeSettings.maxImageHeight)) feedMeMaxImageHeight = feedMeSettings.maxImageHeight;
 
-                if (! isNaN(feedMeSettings.postsCount)) {
-                    feedMePostsCount = feedMeSettings.postsCount
-                }
-                 
-                if (feedMePostsCount > response.items.length) {
-                    feedMePostsCount = response.items.length
-                }
+                if (! isNaN(feedMeSettings.postsCount)) feedMePostsCount = feedMeSettings.postsCount;
                 
-                if (! isNaN(feedMeSettings.maxWords)) {
-                    feedMeWords = feedMeSettings.maxWords;
-                }
+                if (! isNaN(feedMeSettings.maxWords)) feedMeWords = feedMeSettings.maxWords;
 
                 if (! isNaN(feedMeSettings.numColumns)) {
                     feedMeColumns = feedMeSettings.numColumns;
@@ -98,18 +85,20 @@ var feedMe = {
                     hyperlink.href = post.link
                     var postURL = hyperlink.origin + hyperlink.pathname;
 					
-                    if (feedMeSettings.showAuthor) {
-                        feedMeAuthor = post.author;
-                    }
-                    if (feedMeSettings.showDate) {
-                        feedMeDate = new Date(post.pubDate);
-                    }
-                    var feedMePostImageHTML = '<a class="feed-post-image" ' + (feedMeMaxImageHeight === 0 ? '' : 'style="max-height: ' + feedMeMaxImageHeight + 'px;" ') + 'target="'+feedMeTarget+'" href="'+postURL+'"><img style="width: 100%" src="'+postImage+'"/></a>';
+                    if (feedMeSettings.showAuthor) feedMeAuthor = post.author;
+                    if (feedMeSettings.showDate) feedMeDate = new Date(post.pubDate);
+					
+					if (feedMeShowImage) {
+                    	var feedMePostImageHTML = '<a class="feed-post-image" ' + (feedMeMaxImageHeight === 0 ? '' : 'style="max-height: ' + feedMeMaxImageHeight + 'px;" ') + 'target="'+feedMeTarget+'" href="'+postURL+'"><img style="width: 100%" src="'+postImage+'"/></a>';
+					}
+					
                     var feedMePostTitleHTML = '<h4 class="feed-post-title"><a href="'+postURL+'" target="'+feedMeTarget+'">'+postTitle+'</a></h4>';
-                    if (feedMeSettings.showAuthor || feedMeSettings.showDate) {
+
+					if (feedMeSettings.showAuthor || feedMeSettings.showDate) {
                         var feedMeAuthorDateHTML = '<h5 class="feed-post-author-date">' + (feedMeSettings.showAuthor ? 'By <a href="' + mediumURL + '@' + feedMeAuthor + '" target="'+feedMeTarget+'">' + feedMeAuthor + '</a><br/>' : '') + (feedMeSettings.showDate ? 'On ' + feedMeDate.toDateString() : '') + '</h5>'
                     }
-                    var feedMePostSubTitleHTML = '<p class="feed-post-sub-title">'+postSubTitle+'</p>';
+
+					var feedMePostSubTitleHTML = '<p class="feed-post-sub-title">'+postSubTitle+'</p>';
                     var feedPostReadMoreHTML = '<a class="feed-post-read-more" target="'+feedMeTarget+'" href="' + postURL + '">' + feedMeLinkOutText +'</a>';
 
                     feedMePostWrapperDiv.innerHTML =  '<div class="feed-post">' + feedMePostImageHTML + feedMePostTitleHTML + feedMeAuthorDateHTML + feedMePostSubTitleHTML + feedPostReadMoreHTML + '</div>';
