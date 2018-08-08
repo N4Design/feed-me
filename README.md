@@ -44,4 +44,4 @@ Add the following...
     <script src="js/feed-me.js"></script>
 Plus the above Settings script.
 #### Between Your Body Tags
-Add `<div id="feed-me-embed"></div>` as per settings "element" parameter
+Add `<div id="feed-me-embed"></div>` as per settings "element" parameter where you want the feed to appear.
