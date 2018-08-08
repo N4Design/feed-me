@@ -56,7 +56,7 @@ var feedMe = {
                 if (! isNaN(feedMeSettings.numColumns)) feedMeColumns = feedMeSettings.numColumns;
 				
 				if (feedMeSettings.columnClasses !== undefined) feedMeColumnClasses = feedMeSettings.columnClasses;
-				var feedMeColumnClasses += ' col-md-' + 12 / feedMeColumns;
+				feedMeColumnClasses += ' col-md-' + 12 / feedMeColumns;
 				
                 var feedMePostsPerColumn = Math.ceil((feedMePostsCount) / feedMeColumns);
 
@@ -98,7 +98,7 @@ var feedMe = {
                     var feedMePostTitleHTML = '<h4 class="feed-post-title"><a href="'+postURL+'" target="'+feedMeTarget+'">'+postTitle+'</a></h4>';
 
 					if (feedMeSettings.showAuthor || feedMeSettings.showDate) {
-                        var feedMeAuthorDateHTML = '<h5 class="feed-post-author-date">' + (feedMeSettings.showAuthor ? 'By <a href="' + mediumURL + '@' + feedMeAuthor + '" target="'+feedMeTarget+'">' + feedMeAuthor + '</a><br/>' : '') + (feedMeSettings.showDate ? 'On ' + feedMeDate.toDateString() : '') + '</h5>'
+						var feedMeAuthorDateHTML = '<h5 class="feed-post-author-date">' + (feedMeSettings.showAuthor ? 'By <a href="' + mediumURL + '@' + feedMeAuthor + '" target="'+feedMeTarget+'">' + feedMeAuthor + '</a><br/>' : '') + (feedMeSettings.showDate ? 'On ' + feedMeDate.toDateString() : '') + '</h5>'
                     }
 
 					var feedMePostSubTitleHTML = '<p class="feed-post-sub-title">'+postSubTitle+'</p>';
