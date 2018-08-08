@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+}
+#feed-me-embed {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 100%;
+	width: 100%;
+	padding: 10px;
+}
+.feed-column {
+	flex: 33.33%;
+	max-width: 33.33%;
+	padding: 5px;
+}
+.feed-post {
+	display: flex;
+	flex-direction: column;
+}
+.feed-post-image {
+	overflow: hidden;
+}
+.feed-profile {
+	width: 100%;
+	text-align: center;
+}
