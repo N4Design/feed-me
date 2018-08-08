@@ -47,6 +47,7 @@ Add the following...
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/feed-me.js"></script>
+    
 Plus the above Settings script.
 
 #### Between Your Body Tags
