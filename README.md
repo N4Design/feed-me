@@ -55,3 +55,7 @@ Plus the above [Settings](https://github.com/N4Design/feed-me#settings) script.
 #### Between Your Body Tags
 
 Add `<div id="feed-me-embed"></div>` as per settings *element* parameter where you want the feed to appear.
+
+#### Sample CSS
+
+For a simple 3 column responsive layout, try this [sample CSS](https://github.com/N4Design/feed-me/blob/master/css/feed-me.css)
