@@ -32,8 +32,9 @@ var feedMe = {
                 var feedMeWords = 20;
                 var feedMeAuthor = '';
                 var feedMeDate ='';
-                var feedMeColumns = 0;
+                var feedMeColumns = 3;
                 var feedMeMaxImageHeight = 0;
+				var feedMeColumnClasses = '';
 				
                 if(feedMeSettings.openNewTab === true) feedMeTarget = '_blank';
 
@@ -52,9 +53,11 @@ var feedMe = {
                 
                 if (! isNaN(feedMeSettings.maxWords)) feedMeWords = feedMeSettings.maxWords;
 
-                if (! isNaN(feedMeSettings.numColumns)) {
-                    feedMeColumns = feedMeSettings.numColumns;
-                }
+                if (! isNaN(feedMeSettings.numColumns)) feedMeColumns = feedMeSettings.numColumns;
+				
+				if (feedMeSettings.columnClasses !== undefined) feedMeColumnClasses = feedMeSettings.columnClasses;
+				var feedMeColumnClasses += ' col-md-' + 12 / feedMeColumns;
+				
                 var feedMePostsPerColumn = Math.ceil((feedMePostsCount) / feedMeColumns);
 
                 var feedMeEmbed = document.getElementById(feedMeSettings.element);
@@ -64,7 +67,7 @@ var feedMe = {
                 feedMeLinkOut.innerHTML = '<a href="' + mediumProfileURL + '" target="'+feedMeTarget+'" class="feed-profile button">' + feedMeLinkToMediumProfileText+'</a>';
 
                 var feedMeColumnDiv = document.createElement('div');
-                feedMeColumnDiv.className = 'feed-column';
+                feedMeColumnDiv.className = 'feed-column ' + feedMeColumnClasses;
                 var postNum = 1;
 
                 $.each(response.items, function(key, post) {
@@ -110,7 +113,7 @@ var feedMe = {
                             feedMeEmbed.appendChild(feedMeLinkOut);
                             if (key + 1 === feedMePostsCount) return false;
                             feedMeColumnDiv = document.createElement('div');
-                            feedMeColumnDiv.className = 'feed-column';
+                            feedMeColumnDiv.className = feedMeColumnClasses;
                             postNum = 0;
                         }
                     }
