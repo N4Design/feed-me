@@ -13,6 +13,12 @@ function abbrev(str, type, limit, separator, truncator) {
 	}
 }
 
+function titleCase(str) {
+	return str.toLowerCase().split(' ').map(function(word) {
+		return word.replace(word[0], word[0].toUpperCase());
+	}).join(' ');
+}
+
 var feedMe = {
 	initialize: function(feedMeSettings) {
 		var data = {
@@ -74,6 +80,7 @@ var feedMe = {
 					var feedMePostWrapperDiv = document.createElement('div');
 					feedMePostWrapperDiv.className = 'feed-post-wrapper';
 					var postTitle = post.title;
+					if (feedMeSettings.capsTitle) postTitle = titleCase(postTitle);
 					var postImage = post.thumbnail;
 
 					var el = $('<div></div>');
