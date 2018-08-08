@@ -107,7 +107,7 @@ var feedMe = {
                     feedMePostWrapperDiv.innerHTML =  '<div class="feed-post">' + feedMePostImageHTML + feedMePostTitleHTML + feedMeAuthorDateHTML + feedMePostSubTitleHTML + feedPostReadMoreHTML + '</div>';
 
                     if (postNum <= feedMePostsCount) {
-                        feedMeColumnDiv.appendChild(item);
+                        feedMeColumnDiv.appendChild(feedMePostWrapperDiv);
                         if (postNum === feedMePostsPerColumn || postNum === feedMePostsCount) {
                             feedMeEmbed.appendChild(feedMeColumnDiv);
                             feedMeEmbed.appendChild(feedMeLinkOut);
