@@ -67,7 +67,7 @@ var feedMe = {
                 feedMeLinkOut.innerHTML = '<a href="' + mediumProfileURL + '" target="'+feedMeTarget+'" class="feed-profile button">' + feedMeLinkToMediumProfileText+'</a>';
 
                 var feedMeColumnDiv = document.createElement('div');
-                feedMeColumnDiv.className = 'feed-column ' + feedMeColumnClasses;
+                feedMeColumnDiv.className = feedMeColumnClasses;
                 var postNum = 1;
 
                 $.each(response.items, function(key, post) {
