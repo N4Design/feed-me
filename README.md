@@ -19,7 +19,9 @@
 - element: id of element to embed feed within.
 
 ## Usage
+
 ### Settings
+
     <script>
         var feedMeSettings = {
             feedURL: 'https://medium.com/feed/publication-or-user/',
@@ -36,12 +38,17 @@
             element: 'feed-me-embed'
         };
     </script>
+    
 ### Markup
+
 #### Between Your Head Tags
+
 Add the following...
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/feed-me.js"></script>
 Plus the above Settings script.
+
 #### Between Your Body Tags
+
 Add `<div id="feed-me-embed"></div>` as per settings "element" parameter where you want the feed to appear.
