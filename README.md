@@ -17,7 +17,8 @@
 - *maxImageHeight*: maximum height of thumbnail image;
 - *numColumns*: number of columns to divide markup into;
 - *columnClasses*: any additional classes required for feed columns;
-- *element*: id of element to embed feed within.
+- *element*: id of element to embed feed within;
+- *capsTitle*: Capitalise post title.
 
 ## Usage
 
@@ -37,7 +38,8 @@
             maxImageHeight: 450,
             numColumns: 3,
             columnClasses: 'col-class',
-            element: 'feed-me-embed'
+            element: 'feed-me-embed',
+            capsTitle: true
         };
     </script>
     
