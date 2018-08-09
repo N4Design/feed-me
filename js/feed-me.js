@@ -29,7 +29,9 @@ var feedMe = {
 			if (response.status === 'ok') {
 
 				var mediumURL = 'https://medium.com/';
-				var mediumProfileURL = response.feed.url;
+				var hyperLink = document.createElement('a');
+				hyperLink.href = response.feed.link;
+				var mediumProfileURL = hyperLink.origin + hyperLink.pathname;
 				var feedMeShowImage = true;
 				var feedMePostsCount = 4;
 				var feedMeLinkToMediumProfileText = 'Go to Feed';
@@ -85,15 +87,14 @@ var feedMe = {
 
 					var el = $('<div></div>');
 					el.html(post.description);
-
 					var postSubTitle = $('p', el).first().text();
 					var words = postSubTitle.split(' ');
 					if (words.length < feedMeWords) postSubTitle += ' <br/>' + $('p:eq(1)', el).text();
 					postSubTitle = abbrev(postSubTitle, 'w', feedMeWords, ' ', '...');
 
-					var hyperlink = document.createElement('a');
-					hyperlink.href = post.link
-					var postURL = hyperlink.origin + hyperlink.pathname;
+					var hyperLink = document.createElement('a');
+					hyperLink.href = post.link
+					var postURL = hyperLink.origin + hyperLink.pathname;
 
 					if (feedMeSettings.showAuthor) feedMeAuthor = post.author;
 					if (feedMeSettings.showDate) feedMeDate = new Date(post.pubDate);
