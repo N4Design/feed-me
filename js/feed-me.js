@@ -92,12 +92,12 @@ var feedMe = {
 					if (words.length < feedMeWords) postSubTitle += ' <br/>' + $('p:eq(1)', el).text();
 					postSubTitle = abbrev(postSubTitle, 'w', feedMeWords, ' ', '...');
 
-					var hyperLink = document.createElement('a');
+					hyperLink = document.createElement('a');
 					hyperLink.href = post.link
 					var postURL = hyperLink.origin + hyperLink.pathname;
 
 					if (feedMeSettings.showAuthor) feedMeAuthor = post.author;
-					if (feedMeSettings.showDate) feedMeDate = new Date(post.pubDate);
+					if (feedMeSettings.showDate) feedMeDate = new Date(post.pubDate.replace(/-/g, '/'));
 
 					if (feedMeShowImage) {
 						var feedMePostImageHTML = '<a class="feed-post-image" ' + (feedMeMaxImageHeight === 0 ? '' : 'style="max-height: ' + feedMeMaxImageHeight + 'px;" ') + 'target="'+feedMeTarget+'" href="'+postURL+'"><img style="width: 100%" src="'+postImage+'"/></a>';
